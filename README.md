@@ -21,7 +21,8 @@
 │   ├── houses/        # Módulo de imóveis
 │   └── owners/        # Módulo de proprietários
 ├── auth/              # Módulo de autenticação
-└── data/   
+└── data/ 
+```   
 
 ---
 
