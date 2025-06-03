@@ -6,10 +6,11 @@ import { AuthModule } from './auth/auth.module';
 import { HouseModule } from './api/houses/house.module';
 import { ClientModule } from './api/clients/client.module';
 import { DatabaseModule } from './data/database.module';
+import clientController from './api/clients/controller/client.controller';
 
 @Module({
- imports: [OwnerModule, AuthModule, HouseModule, ClientModule, DatabaseModule],
-  controllers: [AppController],
-  providers: [AppService],
+imports: [OwnerModule, AuthModule, HouseModule, ClientModule, DatabaseModule],
+controllers: [AppController],
+providers: [AppService],
 })
 export class AppModule {}

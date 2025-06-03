@@ -42,13 +42,17 @@ O projeto utiliza **PostgreSQL** como banco de dados. As configurações de cone
 
 Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
 
-BD_HOST=localhost
+---
+
+```BD_HOST=localhost
 BD_PORT=5432
 BD_USERNAME=postgres
 BD_PASSWORD=sua_senha
 BD_DATABASE=uni_rent
 JWT_KEYSECRET=sua_chave_secreta
-EXPIRATION_TOKEN=1d
+EXPIRATION_TOKEN=quant_dias_expiração
+```
+---
 
 yaml
 Copiar
