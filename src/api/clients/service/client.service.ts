@@ -1,23 +1,28 @@
-import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
+import { BadRequestException, Inject, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Client } from "../models/client";
 import { Repository } from "typeorm";
-import { HttpExceptionFilter } from "src/api/exception/handleException";
 import { ClientNotFoundException } from "../error/clientException";
+import { ClientRequestDTO } from "./RequestDTO/clientRequestDTO";
+import ClientMapper from "../mapper/clientMapper";
+import { ClienteResponse } from "./ResponseDTO/clientResponseDTO";
 
 @Injectable()
 export default class ClientService{
 
-    constructor( @InjectRepository(Client) private clientRepository: Repository<Client> ){
+    constructor( @InjectRepository(Client) private clientRepository: Repository<Client>,
+     @Inject(ClientMapper) private clienteMapper: ClientMapper ){
 
     }
 
-    async createClient(client: Client): Promise<Client>{
+    async createClient(client: ClientRequestDTO): Promise<ClienteResponse>{
 
         if(await this.findClientByEmail(client.email)){
-            throw new BadRequestException('User already exists')
+            throw new BadRequestException('entrada de dados incorreta')
         }
-        return this.clientRepository.save(client);
+        return this.clienteMapper.parserEntityToClientResponseDTO(
+            await this.clientRepository.save(client)
+        )
     }
 
     async findClientById(id: number): Promise<Client | null>{

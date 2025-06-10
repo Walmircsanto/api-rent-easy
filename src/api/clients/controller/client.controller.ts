@@ -1,6 +1,7 @@
 import { Body, Controller, Get, HttpCode, Inject, Param, Post, Put } from "@nestjs/common";
 import ClientService from "../service/client.service";
 import { Client } from "../models/client";
+import { ClientRequestDTO } from "../service/RequestDTO/clientRequestDTO";
 
 @Controller("client")
 export default class clientController{
@@ -26,7 +27,7 @@ export default class clientController{
 
     @Post("/save")
     @HttpCode(201)
-    async createClient(@Body() client: Client){
+    async createClient(@Body() client: ClientRequestDTO){
      return  await this.clientService.createClient(client);
     }
 
