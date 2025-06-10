@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { House } from '../models/house';
 import { Repository } from 'typeorm';
+import { HouseNotOwner } from 'src/api/owners/error/HouseNotOwner';
 
 @Injectable()
 export default class HouseService {
@@ -9,7 +10,8 @@ export default class HouseService {
     @InjectRepository(House) private houseRepository: Repository<House>,
   ) {}
 
-  createProduct(house: House) {
+
+    createHouse(house: House) {
     return this.houseRepository.save(house);
   }
 
