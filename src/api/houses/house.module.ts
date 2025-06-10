@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import HouseService from './service/house.service';
-import ProductController from './controller/products.controller';
+import ProductController from './controller/house.controller';
 import { House } from './models/house';
 
 @Module({
@@ -11,3 +11,4 @@ import { House } from './models/house';
   controllers: [ProductController],
 })
 export class HouseModule {}
+
